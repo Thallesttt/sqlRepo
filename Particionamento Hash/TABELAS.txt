@@ -1,0 +1,14 @@
+Create Table petowner(id int not null, nome varchar(50),telefone varchar(30),cidade varchar(30))partition by List(cidade);
+Create Table ownercaxias Partition of petowner for values in ('Duque de Caxias');
+Create Table ownermage Partition of petowner for values in ('Magé');
+Create Table ownergeneral Partition of petowner default;
+
+
+
+
+Create Table animal(id int not null, nome varchar(20),especie varchar(20),raca varchar(20))partition by hash(ID);
+Create Table animal_0 Partition of animal for values with (modulus 5, Remainder 0);
+Create Table animal_1 Partition of animal for values with (modulus 5, Remainder 1);
+Create Table animal_2 Partition of animal for values with (modulus 5, Remainder 2);
+Create Table animal_3 Partition of animal for values with (modulus 5, Remainder 3);
+Create Table animal_4 Partition of animal for values with (modulus 5, Remainder 4);
